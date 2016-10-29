@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Máy tính</title>
+
+    <link href="bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="main">
+      <div class="container">
+        <div class="row">
+
+          <div class="left-right col-md-3">
+            
+          </div><!--left-right-->
+
+          <div class="center col-md-6">
+              <img src="images/khung.png" class="img-responsive">
+            <div class="screen1 col-md-10">
+              <h1 class="form-control result" id="in" ></h1>
+            </div><!--screen1-->
+
+            <div class="keyboard col-md-10">
+              <table>
+                <tr>
+                  <td><button value="M+" onclick="setM('m+')">M+</button></td>
+                  <td><button value="M-" onclick="setM('m-')">M-</button></td>
+                  <td><button value="MC" onclick="setM('mc')">MC</button></td>
+                  <td><button value="MR" onclick="setM('mr')">MR</button></td>
+                  <td><button class="res" value="C" onclick='clearDis()'>C</button></td>
+                </tr>
+                <tr>
+                  <td><button class="numb" value="1" onclick='addKey("1")'>1</button></td>
+                  <td><button class="numb" value="2" onclick='addKey("2")'>2</button></td>
+                  <td><button class="numb" value="3" onclick='addKey("3")'>3</button></td>
+                  <td><button value="x" onclick="nhan()">X</button></td>
+                  <td><button value="+/-" onclick='chuyendau()'>+/-</button></td>
+                </tr>
+                <tr>
+                  <td><button class="numb" value="4" onclick='addKey("4")'>4</button></td>
+                  <td><button class="numb" value="5" onclick='addKey("5")'>5</button></td>
+                  <td><button class="numb" value="6" onclick='addKey("6")'>6</button></td>
+                  <td><button value="+" onclick="cong()">+</button></td>
+                  <td><button value="/" onclick="chia()">/</button></td>
+                </tr>
+                <tr>
+                  <td><button class="numb" value="7" onclick='addKey("7")'>7</button></td>
+                  <td><button class="numb" value="8" onclick='addKey("8")'>8</button></td>
+                  <td><button class="numb" value="9" onclick='addKey("9")'>9</button></td>
+                  <td><button value="-" onclick="tru()">-</button></td>
+                  <td rowspan="2"><button style="height:100px;" id="equ" value="=" onclick='compute()'>=</button></td>
+                </tr>
+                <tr>
+                  <td><button class="numb" value="0" onclick='addKey("0")'>0</button></td>
+                  <td ><button class="numb" value="00" onclick='addKey("00")'>00</button></td>
+                  <td><button value="MOD" onclick="mod()">MOD</button></td>
+                  <td><button value="." value="." onclick="cham()">.</button></td>
+                </tr>
+
+              </table>
+  
+            </div><!--key-->
+          </div><!--center-->  
+
+          <div class="left-right col-md-3">
+            
+          </div><!--left-right-->
+
+        </div>
+      </div>    
+    </div><!--main-->
+    <script type="text/javascript">
+      /**
+        Tien Thanh 28/10/2016
+       */
+      var input= "";
+      var result = 0;
+      var memory = 0;
+      var ma=0;
+      window.onload = function () {
+          document.getElementById("in").innerHTML = 0;
+      }
+      function addKey(key) {
+          input += key;
+          document.getElementsByClassName("result").value = input;
+          document.getElementById("in").innerHTML = input;
+      }
+      function cong(){
+          input = parseFloat(input);
+          result += input;
+          pheptinh = "cong";
+          input = "";
+      }
+      function tru() {
+          input = parseFloat(input);
+          result += input;
+          pheptinh = "tru";
+          input = "";
+      }
+      function nhan() {
+          input = parseFloat(input);
+          result += input;
+          pheptinh ="nhan";
+          input = "";
+      }
+      function chia() {
+          input = parseFloat(input);
+          result += input;
+          pheptinh = "chia";
+          input = "";
+      }
+      function mod() {
+          input = parseFloat(input);
+          result += input;
+          pheptinh = "mod";
+          input = "";
+      }
+
+      function compute() {
+          input = parseFloat(input);
+          if (pheptinh == "cong"){
+
+              result += input;
+              input = parseFloat(input);
+              input = 0;
+          }
+          if (pheptinh == "tru"){
+              result -= input;
+              input = parseFloat(input);
+              input = 0;
+          }
+          if (pheptinh == "nhan"){
+              result *= input;
+              input = parseFloat(input);
+              input = 0;
+          }
+          if (pheptinh == "chia"){
+              result /= input;
+              input = parseFloat(input);
+              input = 0;
+          }
+          if (pheptinh == "mod"){
+              result %= input;
+              input = parseFloat(input);
+              input = 0;
+          }
+          document.getElementById("in").innerHTML = result;
+      }
+
+      function clearDis() {
+          memory = result;
+          result = 0;
+          input = "";
+
+          document.getElementById("in").innerHTML = 0;
+
+      }
+
+      function setM(m){
+          switch(m){
+              case "MC":
+                  document.getElementById('in').innerHTML = "";
+                  memory = 0;
+                  break;
+              case "M+":
+                  document.getElementById('in').innerHTML = input;
+                  memory += result;
+                  input = parseFloat(input);
+                  break;  
+              case "M-":
+                  document.getElementById('in').innerHTML = input;
+                  memory -= result;
+                  input = parseFloat(input);
+                  break; 
+              case "MR":
+                  document.getElementById('in').innerHTML = memory;
+                  input=memory;
+                  break;     
+          }
+      }
+      function chuyendau() {
+          input = input * -1;
+          document.getElementById("in").innerHTML = input;
+      }
+      function cham() {
+          input+="." ;
+          document.getElementById("in").innerHTML = input;
+      }
+
+    </script>
+  </body>
+</html>

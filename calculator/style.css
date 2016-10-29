@@ -1,0 +1,73 @@
+* {
+  margin: 0px;
+  padding: 0px; }
+
+html, body {
+  height: 100%;
+  font-family: Roboto-Light; }
+
+@font-face {
+  font-family: pocket_calcuatlor;
+  src: url("./font/pocket_calcuatlor_tt.ttf"); }
+.clearfix {
+  overflow: hidden;
+  clear: both; }
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0; }
+
+a:hover {
+  text-decoration: none; }
+
+#main {
+  background-image: url(../images/bg.jpg);
+  height: 570px; }
+  #main select .test {
+    background-color: red !important; }
+  #main .center {
+    position: relative;
+    padding-top: 5px; }
+    #main .center .screen1 {
+      position: absolute;
+      top: 0;
+      left: 45px;
+      padding-top: 50px; }
+    #main .center .keyboard {
+      position: absolute;
+      top: 0;
+      padding-left: 70px;
+      padding-top: 250px; }
+      #main .center .keyboard tr > td {
+        padding: 10px;
+        font-weight: bold; }
+        #main .center .keyboard tr > td button {
+          width: 60px;
+          height: 40px;
+          font-size: 20px;
+          color: #fff;
+          background-color: #2a2a2a;
+          box-shadow: 0px 0px 10px #777777; }
+          #main .center .keyboard tr > td button:hover {
+            opacity: 0.6;
+            color: red; }
+        #main .center .keyboard tr > td .res {
+          background-color: #ee7f28; }
+        #main .center .keyboard tr > td .numb {
+          background-color: #3a3b40; }
+
+.row {
+  margin: 10px; }
+
+#in {
+  height: 140px;
+  border: solid 15px #000000;
+  border-radius: 10px;
+  background-color: #aece59;
+  top: 40px;
+  left: 50px;
+  font-size: 70px;
+  font-family: pocket_calcuatlor;
+  text-align: right; }
+
+/*# sourceMappingURL=style.css.map */

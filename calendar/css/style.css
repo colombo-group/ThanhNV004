@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #eabc81;
+}
+#main {
+    margin: auto;
+}
+.col-md-12{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.col-md-6{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.lich1{
+  background-color: #2b81be;
+  padding-top: 40px;
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+.lich2{
+  background-color: #2b81be;
+  margin-bottom: 15px;
+  box-shadow: 0px 10px 10px #777777;
+}
+.lich2 p{
+  color: #d1f67b;
+  font-weight: bold;
+  padding-left: 26px;
+  padding-right: 58px;
+}
+.lich2 p:hover{
+  color: #d2e2ed;
+}
+.lich2 p:last-child{
+  padding-right: 0px;
+}
+.center {
+  background-color: #fff;
+  box-shadow: 0px 10px 30px #777777;
+  height: 548px;
+  margin-top: 20px;
+}
+.center table {
+  width: 100%;
+}
+#month {
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
+}
+#hienthi table {
+  margin: auto;
+  text-align: center;
+}
+#hienthi table td{
+  padding: 20px;
+  border:solid 2px #d9d9d9;
+  color: #777777;
+  font-size: 16px;
+  font-weight: bold;
+}
+#hienthi table td:hover{
+  background-color: #a0d06c;
+  color: red;
+}
+.today {
+  background-color: red;
+  color: #fff !important;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lịch</title>
+
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css"  rel="stylesheet" type="text/css" />
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="main">
+      <div class="container">
+        <div class="row">
+
+          <div class="left-right col-md-3">
+            
+          </div><!--left-right-->
+
+          <div class="center col-md-6">
+            <div class="lich1 col-md-12">
+              <button onclick = "lich(-1)" class="col-md-1"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                <div id="month" class="col-md-10  animated infinite swing"></div>
+              <button onclick = "lich(1)" class="col-md-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+            </div><!--lich-->
+            <div class="lich2 col-md-12">
+              <p  class="col-md-1">SUN</p>
+              <p  class="col-md-1">MON</p>
+              <p  class="col-md-1">TUE</p>
+              <p  class="col-md-1">WED</p>
+              <p  class="col-md-1">THU</p>
+              <p  class="col-md-1">FRI</p>
+              <p  class="col-md-1">SAT</p>
+            </div>
+            <div id="hienthi" class="col-md-12">
+            </div>
+          </div><!--center-->  
+          
+          <div class="left-right col-md-3">
+            
+          </div><!--left-right-->
+
+        </div>
+      </div>    
+    </div><!--main-->
+  
+
+<script type="text/javascript">
+
+  var TDDate = new Date();
+  var now = new Date();
+  var monthDays = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+  var listmonth = new Array("January","Februrary","March","April","May", "June","July","August","September","October","November","Decemeber");
+  display();
+  function lich(i){
+  TDDate.setDate(1);
+  TDDate.setMonth(TDDate.getMonth() + i);
+    display();
+  }
+  function display(){
+      var thisday=TDDate.getDay();
+      var thisMonth=TDDate.getMonth();
+      var thisDate=TDDate.getDate();
+      var thisYear=TDDate.getFullYear();
+      var notDate=thisDate;
+      var first_date = new Date(thisYear, thisMonth,1);
+      var first_day = first_date.getDay();
+      var now =new Date();
+      var nowDate = now.getDate();
+      var nowMounth = now.getMonth();
+      var nowYear = now.getFullYear();
+      var html = "";
+      title = listmonth[thisMonth] + ' ' + thisYear;
+      document.getElementById('month').innerHTML = title;
+      html += "<table>";
+      html += "<tr>";
+      for (s = 0; s < first_day; s++) {
+          html +="<td></td>";
+      }
+      date=1;
+      while (date <= monthDays[thisMonth])
+      {
+          for (i = first_day;i<7;i++)
+          {
+              if (date <= monthDays[thisMonth]){
+                  if(nowDate == date && nowMounth == thisMonth && nowYear == thisYear){
+                      html +='<td class="today"><b class="animated infinite flash">' + date + '</b></td>';
+                  }else{
+                      html +='<td>' +date+ '</td>';
+                  }
+              }
+              else{
+                  html +="";
+              }
+              date++;
+          }
+          html +="</tr>";
+          first_day=0;
+      }
+      html +="</table>";
+      document.getElementById('hienthi').innerHTML = html;
+  }
+  </script>
+</body>
+</html>
