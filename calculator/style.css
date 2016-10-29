@@ -21,7 +21,7 @@ a:hover {
   text-decoration: none; }
 
 #main {
-  background-image: url(../images/bg.jpg);
+  background-image: url(./images/bg.jpg);
   height: 570px; }
   #main select .test {
     background-color: red !important; }
